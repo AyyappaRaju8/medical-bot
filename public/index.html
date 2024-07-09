@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="chat-container">
+      <h1>Medic-Chatbot</h1>
+      <div id="chat-history"></div>
+      <form id="chat-form">
+        <button id="bookButton" type="button">Book</button>
+        <input type="text" id="user-input" placeholder="Enter your message" />
+        <button id="submit" type="submit">Send</button>
+      </form>
+    </div>
+    <div id="loader">
+      <img src="loader.gif" width="150px" alt="Loading..." />
+    </div>
+    <div id="google_element">Translate</div>
+    <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
