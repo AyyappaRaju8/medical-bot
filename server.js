@@ -31,6 +31,8 @@ const generationConfig = {
 async function run(userInput) {
   const chatSession = model.startChat({
     generationConfig,
+    // safetySettings: Adjust safety settings
+    // See https://ai.google.dev/gemini-api/docs/safety-settings
     history: [
       {
         role: "user",
@@ -52,19 +54,7 @@ async function run(userInput) {
         role: "model",
         parts: [
           {
-            text: "The question you asked is not related to medicine or health care.\nWould you like to ask me something about those topics? 😊 \n",
-          },
-        ],
-      },
-      {
-        role: "user",
-        parts: [{ text: "give me the symptoms of fever\n" }],
-      },
-      {
-        role: "model",
-        parts: [
-          {
-            text: "Fever is a common symptom that can be caused by a variety of factors. Here are some common symptoms associated with fever:\nGeneral Symptoms:**\n* **Elevated body temperature:** This is the most obvious symptom of fever, and it can be measured using a thermometer.  A temperature of 100.4°F (38°C) or higher is generally considered a fever.\n* **Chills:** You may feel cold even though your body temperature is elevated.\n* **Sweating:** You may sweat more than usual, especially when the fever breaks.\n* **Headache:**  You may experience a headache, which can be mild or severe.\n* **Muscle aches and pains:**  These are common with fever, especially in cases of the flu or other viral infections.\n* **Fatigue:** You may feel tired and weak.\n* **Loss of appetite:** You may not feel like eating.\n**Other Possible Symptoms:**\n* **Sore throat:** This is common with viral infections, such as the common cold or strep throat.\n* **Cough:**  A cough can be a sign of respiratory infection.\n* **Runny nose:**  This is also common with viral infections.\n* **Nausea and vomiting:** These symptoms can occur with fever, especially in children.\n* **Diarrhea:**  This can also be a symptom of fever, particularly in cases of food poisoning.\n* **Rash:**  A rash may appear with some types of fever, such as measles or chickenpox.\n**Important Note:**\nIt's important to remember that these are just general symptoms, and the specific symptoms you experience may vary depending on the underlying cause of your fever.\n**If you are concerned about a fever, it is always best to consult a doctor or other healthcare professional.** They can help you determine the cause of your fever and recommend the appropriate treatment. \n",
+            text: "That's an interesting question, but it's not related to medicine or health care.  \n\nWould you like to ask me something about those topics? 😊 \n",
           },
         ],
       },
@@ -76,47 +66,10 @@ async function run(userInput) {
         role: "model",
         parts: [
           {
-            text: "That's a great question, but it's not related to medicine or health care. Would you like to ask me something about those topics? 😊",
+            text: "That's a great question, but it's not related to medicine or health care.  \n\nWould you like to ask me something about those topics? 😊 \n",
           },
-        ],
-      },
-      {
-        role: "user",
-        parts: [{ text: "Dont say thats a great question\n" }],
-      },
-      {
-        role: "model",
-        parts: [
           {
-            text: `Okay, I understand.  While that's an interesting question, it's not within the realm of medicine or health care. \nDo you have any other questions, perhaps related to medical conditions, symptoms, or treatments? I'm happy to help with those! 😄 \n`,
-          },
-        ],
-      },
-      {
-        role: "user",
-        parts: [{ text: "who won the fifa world cup\n" }],
-      },
-      {
-        role: "model",
-        parts: [
-          {
-            text: "I understand you're curious about the FIFA World Cup, but I'm designed to provide information about medicine and health care. \nHow about we try a different question? Maybe you'd like to know about:\n* **Common cold symptoms?**\n* **Tips for healthy eating?** \n* **The latest advancements in cancer treatment?**\nI'm ready to share my knowledge on health-related subjects! 😊  \n",
-          },
-        ],
-      },
-      {
-        role: "user",
-        parts: [
-          {
-            text: "dont give examples. just ask them to give health and medical questions\n",
-          },
-        ],
-      },
-      {
-        role: "model",
-        parts: [
-          {
-            text: "Okay, I understand. \nPlease ask your questions related to medicine and health care, and I'll do my best to help! 😊 \n",
+            text: "Okay, I understand. \n\nPlease ask your questions related to medicine and health care, and I'll do my best to help! 😊 \n",
           },
         ],
       },
@@ -132,15 +85,80 @@ async function run(userInput) {
           },
         ],
       },
+      {
+        role: "user",
+        parts: [{ text: "what are the symptoms of fever\n" }],
+      },
+      {
+        role: "model",
+        parts: [
+          {
+            text: "That's a great question! A fever itself isn't an illness, but it's a sign that something is going on in your body.  Here are some common symptoms according to the Mayo Clinic:\n\n* **A temperature of 100.4°F (38°C) or higher** is considered a fever in adults.\n* **Feeling too hot or cold**.\n* **Sweating**\n* **Shivering**\n* **Headache**\n* **Muscle aches**\n* **Loss of appetite**\n* **Irritability**\n* **Dehydration**\n* **Weakness and fatigue** \n\n**In young children, you might also see:**\n\n* **Flushed cheeks**\n* **Glassy eyes**\n\n**It's important to remember:**  Fever can sometimes be a symptom of a more serious condition. \n\n**When to See a Doctor**\n\nBe sure to contact a medical professional if:\n\n* **An adult has a fever that reaches 103 F (39.4 C) or higher**\n* **A fever lasts longer than three days**\n* **You experience a fever alongside symptoms like severe headache, stiff neck, confusion, shortness of breath, or other concerning signs** \n\nFor reliable information about fevers, you can visit the Mayo Clinic website: [https://www.mayoclinic.org/diseases-conditions/fever/symptoms-causes/syc-20352759](https://www.mayoclinic.org/diseases-conditions/fever/symptoms-causes/syc-20352759) \n",
+          },
+        ],
+      },
+      {
+        role: "user",
+        parts: [
+          {
+            text: "Question: What are the common symptoms of dengue fever?\nAnswer: Common symptoms of dengue fever include high fever, severe headache, pain behind the eyes, joint and muscle pain, rash, and mild bleeding (such as nose or gum bleed).\n\nQuestion: How can I prevent malaria?\nAnswer: To prevent malaria, use mosquito nets, apply mosquito repellents, wear long-sleeved clothing, and avoid stagnant water around your home. In high-risk areas, taking antimalarial medication as prescribed by a doctor is also recommended.\n\nQuestion: What should I do if I have symptoms of COVID-19?\nAnswer: If you have symptoms of COVID-19, such as fever, cough, and difficulty breathing, self-isolate, wear a mask, and seek medical advice. Follow local health guidelines and get tested if advised.\n\nQuestion: What is the best diet for managing diabetes?\nAnswer: A healthy diet for managing diabetes includes whole grains, fresh fruits and vegetables, lean proteins, and low-fat dairy. Avoid sugary foods, refined carbs, and saturated fats. Regular meals and portion control are also important.\n\nQuestion: How often should I get a health check-up?\nAnswer: For adults, it is recommended to have a health check-up at least once a year. This includes blood pressure, cholesterol, blood sugar tests, and other screenings as advised by your doctor.\n\nQuestion: What are the signs of a heart attack?\nAnswer: Signs of a heart attack include chest pain or discomfort, pain in the arms, back, neck, jaw, or stomach, shortness of breath, nausea, lightheadedness, and cold sweats. Seek emergency medical help immediately if you experience these symptoms.\n\nQuestion: How can I improve my mental health?\nAnswer: To improve mental health, practice regular physical activity, maintain a healthy diet, get enough sleep, stay connected with loved ones, manage stress through relaxation techniques, and seek professional help if needed.\n\nQuestion: What vaccinations are recommended for children in India?\nAnswer: Recommended vaccinations for children in India include BCG, DPT, OPV, Hepatitis B, MMR, and vaccines for rotavirus, pneumococcus, and HPV, among others. Follow the immunization schedule provided by your pediatrician.\n\nQuestion: How can I maintain a healthy weight?\nAnswer: To maintain a healthy weight, follow a balanced diet, engage in regular physical activity, drink plenty of water, avoid junk food, and monitor your calorie intake. Maintaining a regular eating schedule and getting enough sleep are also important.\n\nQuestion: What are the benefits of yoga for health?\nAnswer: Yoga improves flexibility, strength, and posture. It also helps reduce stress, anxiety, and depression, enhances respiratory and cardiovascular health, boosts mental clarity, and promotes overall well-being.",
+          },
+        ],
+      },
+      {
+        role: "model",
+        parts: [
+          {
+            text: "This is all great information! It looks like you've got a good grasp of providing helpful and accurate health advice.  Do you have any other questions for me regarding medicine or health care?  😊 \n",
+          },
+        ],
+      },
+      {
+        role: "user",
+        parts: [{ text: "what is cricket\n" }],
+      },
+      {
+        role: "model",
+        parts: [
+          {
+            text: "I'm designed to answer questions about medicine and health care. 🏏\n\nAre you curious about any health topics today? \n",
+          },
+        ],
+      },
+      {
+        role: "user",
+        parts: [{ text: "who won fifa worldcup\n" }],
+      },
+      {
+        role: "model",
+        parts: [
+          {
+            text: " I'm designed to answer questions about medicine and healthcare. \n\nDo you have any health-related questions I can assist you with today? \n",
+          },
+        ],
+      },
+
+      {
+        role: "user",
+        parts: [{ text: "who is messi\n" }],
+      },
+      {
+        role: "model",
+        parts: [
+          {
+            text: "I understand you're interested in sports, but my expertise lies in medicine and healthcare. \n\nDo you have any questions related to those areas that I can help you with? 😊\n",
+          },
+        ],
+      },
     ],
   });
-
   const result = await chatSession.sendMessage(userInput);
   const response = result.response
     .text()
     .replace(/\*/g, "</p>\n<p>")
     .replace(/\n\n\n+/g, "\n\n")
     .replace(/\s*<br\s*>/g, "<br>");
+  if (response === undefined) response = "Please try again.";
   return `<p>${response}</p>`;
 }
 
